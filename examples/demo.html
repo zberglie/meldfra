@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Medlemsportalen (demo)</title>
+  <style>
+    :root { --meldfra-primary: #00509e; }
+    body { font-family: system-ui, sans-serif; margin: 0; background: #f5f7fa; color: #1a1a1a; }
+    header { background: #00509e; color: #fff; padding: 16px 24px; }
+    main { max-width: 720px; margin: 24px auto; padding: 0 16px; }
+    .card { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+    button { height: 40px; padding: 0 16px; border-radius: 8px; border: 0; background: #00509e; color: #fff; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <header><strong>Medlemsportalen</strong> — demo</header>
+  <main>
+    <!-- Personopplysninger merkes med data-meldfra-sensitive: de sladdes i skjermbildet. -->
+    <div class="card" data-meldfra-sensitive>
+      <h2>Ola Nordmann</h2>
+      <p>Medlemsnummer 48213 · ola.nordmann@example.no · 912 34 567</p>
+    </div>
+    <div class="card">
+      <h2>Kontingent 2027</h2>
+      <p>Forfaller 15. januar.</p>
+      <button data-testid="betal-kontingent" onclick="betal()">Betal kontingent</button>
+      <p id="status"></p>
+    </div>
+  </main>
+  <script>
+    async function betal() {
+      const r = await fetch("/api/betal", { method: "POST" });
+      document.getElementById("status").textContent = r.ok ? "Betalt!" : "Noe gikk galt.";
+    }
+  </script>
+  <script src="/meldfra/meldfra.js" data-meldfra-auto data-lang="nb" data-app-version="demo-1"></script>
+</body>
+</html>

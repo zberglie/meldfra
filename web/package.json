@@ -1,0 +1,25 @@
+{
+  "name": "@meldfra/widget",
+  "version": "0.1.0",
+  "description": "«Meld fra»-knapp: KI-intervju, maskert skjermbilde og trykkhistorikk med samtykke",
+  "type": "module",
+  "main": "dist/meldfra.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --noEmit && node build.mjs",
+    "typecheck": "tsc --noEmit",
+    "e2e": "playwright test"
+  },
+  "dependencies": {
+    "html2canvas": "1.4.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "esbuild": "0.25.10",
+    "typescript": "5.9.3"
+  },
+  "private": true
+}

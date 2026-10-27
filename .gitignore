@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.egg-info/
+*.db
+.env
+node_modules/
+web/dist/
+web/test-results/
+web/playwright-report/
+web/e2e/out/
+.pytest_cache/
+server/build/

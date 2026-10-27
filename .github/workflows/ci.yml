@@ -1,0 +1,21 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  server:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -e "server[dev]"
+      - run: cd server && python -m pytest -q
+  widget:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - run: cd web && npm ci && npm run build
+      # Den bygde widgeten ligger i git (server/meldfra/static/) så Python-pakken er komplett
+      # uten Node. Denne sjekken fanger at noen endret web/src uten å bygge på nytt.
+      - run: git diff --exit-code server/meldfra/static/meldfra.js
