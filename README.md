@@ -33,7 +33,7 @@ nettleser                                server (vertsløsningen)               
 ### 1. Backend (FastAPI)
 
 ```bash
-pip install "git+https://github.com/<eier>/meldfra.git#subdirectory=server"   # + [postgres] for Postgres
+pip install "git+https://github.com/zberglie/meldfra.git#subdirectory=server"   # + [postgres] for Postgres
 ```
 
 ```python
@@ -165,3 +165,7 @@ Detaljene står i `docs/ARKITEKTUR.md`.
 | Skjermbilde (maskert) | samtykke | **av** | **bare** i egen database, slettes etter 30 dager, aldri i trackeren |
 
 Brukeren ser nøyaktig hva som sendes (bildet og hendelseslista) før noe forlater nettleseren. Brukeren kan slette sine egne rapporter i «Mine rapporter».
+
+## Lisens
+
+MIT. Se `LICENSE`.
